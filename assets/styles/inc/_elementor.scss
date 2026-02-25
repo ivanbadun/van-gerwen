@@ -1,0 +1,94 @@
+selector .custom-style {
+  color: $red;
+  font-family: 'Mansalva';
+  font-weight: 400;
+}
+
+/* Tabs */
+.e-n-tabs-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+.e-n-tab-title {
+  width: 100%;
+  justify-content: flex-start !important;
+  padding: 10px 0 !important;
+  position: relative;
+  background: none !important;
+  border: none !important;
+}
+
+.e-n-tab-title .e-n-tab-title-text {
+  color: $blackbrown;
+  font-weight: 400;
+  margin-left: 0;
+  transition: margin-left 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    font-weight 0.3s ease;
+}
+
+.e-n-tab-title[aria-selected='true'] .e-n-tab-title-text {
+  margin-left: 50px;
+  font-weight: 700;
+}
+
+.e-n-tab-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 2px;
+  background-color: $red;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.e-n-tab-title[aria-selected='true']::before {
+  opacity: 1;
+}
+
+/* Slider */
+.my-custom-carousel .elementor-main-swiper,
+.my-custom-carousel .swiper-container {
+  overflow: visible !important;
+  width: 100% !important;
+}
+
+.my-custom-carousel .swiper-slide {
+  width: calc((100% - 40px) / 2.4) !important;
+  flex-shrink: 0 !important;
+  margin-right: 20px !important;
+}
+
+.my-custom-carousel .elementor-swiper-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #ffffff !important;
+  border-radius: 50% !important;
+  width: 45px !important;
+  height: 45px !important;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1) !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.my-custom-carousel .elementor-swiper-button svg {
+  fill: $red !important;
+  width: 14px !important;
+  height: auto !important;
+}
+
+.my-custom-carousel .elementor-swiper-button-next {
+  right: auto !important;
+  left: calc(((100% - 40px) / 2.4) * 2 + 20px - 22.5px) !important;
+}
+
+.my-custom-carousel .elementor-swiper-button-prev {
+  left: auto !important;
+  right: calc(((100% - 40px) / 2.4) * 2 + 20px - 22.5px) !important;
+}
