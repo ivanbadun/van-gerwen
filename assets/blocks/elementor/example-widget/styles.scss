@@ -1,2 +1,202 @@
-.example-widget {
+.hero-section {
+  --primary-red: #c40a00;
+  --text-dark: #222;
+  text-align: center;
+  padding: 60px 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  background: #ffffff;
+  /* Центрируем содержимое внутри секции */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zz-index {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-header h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* Обновленный стиль параграфа */
+.hero-header p {
+  font-size: clamp(18px, 3vw, 24px);
+  margin: 0 auto; /* Центрирует блок в контейнере */
+  font-weight: 500;
+  max-width: 700px; /* Ограничиваем ширину, чтобы текст не был слишком растянут */
+  line-height: 1.4;
+}
+
+.button-group {
+  margin: 35px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.btn {
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-red {
+  background-color: var(--primary-red);
+  color: #ffffff;
+}
+
+.btn-gray {
+  background-color: #e8e8e8;
+  color: var(--text-dark);
+}
+
+/* Контейнер для фото и кругов */
+.visual-container {
+  position: relative;
+  margin: -60px auto 0;
+  width: 100%;
+  max-width: 800px;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
+}
+
+.circle-bg {
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 650px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #f0f0f0 0%,
+    #f0f0f0 25%,
+    #f7f7f7 25%,
+    #f7f7f7 50%,
+    #fcfcfc 50%,
+    #fcfcfc 100%
+  );
+}
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  max-width: 100%; /* Чтобы не вылезало на мобильных */
+  height: 500px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.colleagues-badge {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatars img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  margin-right: -12px;
+  object-fit: cover;
+}
+
+.badge-text {
+  text-align: left;
+}
+
+.badge-text strong {
+  display: block;
+  color: var(--primary-red);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.badge-text span {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 15px;
+  }
+
+  .visual-container {
+    height: 400px;
+    margin-top: 20px; /* Убираем наложение на мобильных для читаемости */
+  }
+
+  .hero-image {
+    height: 350px;
+  }
+
+  .circle-bg {
+    width: 400px;
+    height: 400px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+  }
 }

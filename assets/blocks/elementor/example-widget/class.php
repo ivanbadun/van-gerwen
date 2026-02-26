@@ -1,121 +1,102 @@
 <?php
-
 namespace elementorWidget;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 
-class ExampleWidget extends Widget_Base
-{
-    /**
-     * Get widget name.
-     *
-     * Retrieve widget name.
-     *
-     * @return string widget name
-     *
-     * @since 1.0.0
-     *
-     * @access public
-     */
-    public function get_name()
-    {
-        return 'example_widget';
-    }
+class ExampleWidget extends Widget_Base {
 
-    /**
-     * Get widget title.
-     *
-     * Retrieve widget title.
-     *
-     * @return string widget title
-     *
-     * @since 1.0.0
-     *
-     * @access public
-     */
-    public function get_title()
-    {
-        return __('Example widget', 'fwp');
-    }
+    public function get_name() { return 'power_hero_widget'; }
+    public function get_title() { return __('Power Hero Widget', 'fwp'); }
+    public function get_icon() { return 'eicon- grows'; }
+    public function get_categories() { return ['general']; }
 
-    /**
-     * Get widget icon.
-     *
-     * Retrieve oEmbed widget icon.
-     *
-     * @return string widget icon
-     *
-     * @since 1.0.0
-     *
-     * @access public
-     */
-    public function get_icon()
-    {
-        // Icon library https://elementor.github.io/elementor-icons/
-        return 'eicon-square';
-    }
-
-    /**
-     * Get widget categories.
-     *
-     * Retrieve the list of categories the oEmbed widget belongs to.
-     *
-     * @return array widget categories
-     *
-     * @since 1.0.0
-     *
-     * @access public
-     */
-    public function get_categories()
-    {
-        return ['general'];
-    }
-
-    /**
-     * Register widget controls.
-     *
-     * Adds different input fields to allow the user to change and customize the widget settings.
-     *
-     * @see https://code.elementor.com/classes/elementor-controls_manager/
-     * @see https://developers.elementor.com/elementor-controls/
-     * @since 1.0.0
-     *
-     * @access protected
-     */
-    protected function _register_controls()
-    {
-        $this->start_controls_section('content', [
-            'label' => __('Content', 'fwp'),
-            'tab' => Controls_Manager::TAB_CONTENT,
+    protected function _register_controls() {
+        // Секция Текста
+        $this->start_controls_section('section_content', [
+            'label' => __('Контент', 'fwp'),
         ]);
 
-        $this->add_control('example_text', [
-            'label' => esc_html__('Example text', 'fwp'),
+        $this->add_control('title', [
+            'label' => __('Заголовок', 'fwp'),
             'type' => Controls_Manager::TEXT,
-            'label_block' => true,
+            'default' => 'Make your power visible',
+        ]);
+
+        $this->add_control('subtitle', [
+            'label' => __('Подзаголовок', 'fwp'),
+            'type' => Controls_Manager::TEXTAREA,
+            'description' => __('Используйте тег span для выделения красным', 'fwp'),
+            'default' => 'Zet <span class="highlight">jouw kracht</span> aan het werk',
+        ]);
+
+        $this->add_control('main_image', [
+            'label' => __('Главное фото сотрудника', 'fwp'),
+            'type' => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => \Elementor\Utils::get_placeholder_image_src(),
+            ],
+        ]);
+
+        $this->end_controls_section();
+
+        // Секция Кнопок
+        $this->start_controls_section('section_buttons', [
+            'label' => __('Кнопки', 'fwp'),
+        ]);
+
+        $this->add_control('btn_red_text', [
+            'label' => __('Текст красной кнопки', 'fwp'),
+            'type' => Controls_Manager::TEXT,
+            'default' => 'Bekijk vacatures',
+        ]);
+
+        $this->add_control('btn_red_link', [
+            'label' => __('Ссылка красной кнопки', 'fwp'),
+            'type' => Controls_Manager::URL,
+        ]);
+
+        $this->add_control('btn_gray_text', [
+            'label' => __('Текст серой кнопки', 'fwp'),
+            'type' => Controls_Manager::TEXT,
+            'default' => 'Leer ons kennen',
+        ]);
+
+        $this->add_control('btn_gray_link', [
+            'label' => __('Ссылка серой кнопки', 'fwp'),
+            'type' => Controls_Manager::URL,
+        ]);
+
+        $this->end_controls_section();
+
+        // Секция Бейджа (Коллеги)
+        $this->start_controls_section('section_badge', [
+            'label' => __('Бейдж с коллегами', 'fwp'),
+        ]);
+
+        $this->add_control('badge_number', [
+            'label' => __('Цифра', 'fwp'),
+            'type' => Controls_Manager::TEXT,
+            'default' => '30+',
+        ]);
+
+        $this->add_control('badge_text', [
+            'label' => __('Текст под цифрой', 'fwp'),
+            'type' => Controls_Manager::TEXT,
+            'default' => 'Leuke collega\'s!',
+        ]);
+
+        $this->add_control('avatars', [
+            'label' => __('Аватарки (выберите 3)', 'fwp'),
+            'type' => Controls_Manager::GALLERY,
+            'default' => [],
         ]);
 
         $this->end_controls_section();
     }
 
-    /**
-     * Render widget output on the frontend.
-     *
-     * Written in PHP and used to generate the final HTML.
-     *
-     * @since 1.0.0
-     *
-     * @access protected
-     */
-    protected function render()
-    {
-        $settings = $this->get_settings();
-
-        $args = [
-            'example_text' => $settings['example_text'],
-        ];
-
-        show_template('template', $args, str_replace(get_stylesheet_directory() . DIRECTORY_SEPARATOR, '', __DIR__));
+    protected function render() {
+        $settings = $this->get_settings_for_display();
+        include( __DIR__ . '/template.php' );
     }
 }
