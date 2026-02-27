@@ -1,3 +1,8 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* Tabs */
 .e-n-tabs-heading {
   display: flex;
@@ -70,6 +75,7 @@
   height: auto !important;
   display: flex !important;
   flex-direction: column !important;
+  padding: 0 !important;
 }
 
 .my-custom-carousel .swiper-slide > .elementor-widget-container,
@@ -81,16 +87,81 @@
   height: 100% !important;
 }
 
-.my-custom-carousel.elementor-element {
-  z-index: 10;
+.my-custom-carousel .elementor-swiper-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: $white !important;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 10 !important;
+}
+
+.my-custom-carousel .elementor-swiper-button i,
+.my-custom-carousel .elementor-swiper-button svg {
+  color: $red !important;
+  fill: $red !important;
+  width: 16px !important;
 }
 
 .my-custom-carousel .elementor-swiper-button-next {
-  right: -22px !important;
+  right: -22.5px !important;
   left: auto !important;
 }
 
 .my-custom-carousel .elementor-swiper-button-prev {
-  left: -22px !important;
+  left: -22.5px !important;
   right: auto !important;
+}
+
+@media (max-width: 640px) {
+  .my-custom-carousel .swiper-slide {
+    width: 90% !important;
+    margin-right: 15px !important;
+  }
+
+  .my-custom-carousel .elementor-swiper-button-next {
+    right: 5px !important;
+  }
+  .my-custom-carousel .elementor-swiper-button-prev {
+    left: 5px !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .my-custom-carousel .swiper-slide {
+    width: calc((100%) / 1) !important;
+  }
+}
+
+.my-custom-carousel .elementor-widget-image {
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.my-custom-carousel .elementor-widget-image img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+@media (max-width: 1024px) {
+  .my-custom-carousel .swiper-slide,
+  .my-custom-carousel .swiper-slide > .elementor-widget-container,
+  .my-custom-carousel .swiper-slide .e-con {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .my-custom-carousel .swiper {
+    overflow: visible !important;
+  }
 }
