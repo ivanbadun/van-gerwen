@@ -11,15 +11,6 @@ class HomeWidget extends Widget_Base {
     public function get_icon() { return 'eicon-image-bold'; }
     public function get_categories() { return ['general']; }
 
-    protected function _register_controls() {
-        $this->start_controls_section('content_section', [
-            'label' => __('Настройки', 'fwp'),
-            'tab' => Controls_Manager::TAB_CONTENT,
-        ]);
-
-        $this->end_controls_section();
-    }
-
     protected function render() {
         $settings = $this->get_settings_for_display();
         $post_id = get_the_ID();
@@ -27,8 +18,7 @@ class HomeWidget extends Widget_Base {
         $args = [
             'title'          => get_the_title($post_id),
             'excerpt'        => get_the_excerpt($post_id),
-            'image'          => get_the_post_thumbnail_url($post_id, 'full'),
-            'highlight_word' => $settings['title_highlight_word'],
+            'image'          => get_the_post_thumbnail_url($post_id, 'full_hd'),
         ];
 
         include( __DIR__ . '/template.php' );

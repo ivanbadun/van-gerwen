@@ -34,14 +34,16 @@
         <?php endif; ?>
 
         <div class="colleagues-badge">
-            <div class="avatars">
-                <?php
-                if (!empty($settings['avatars'])) {
-                    foreach ( array_slice($settings['avatars'], 0, 3) as $image ) {
-                        echo '<img src="' . esc_url($image['url']) . '" alt="Colleague">';
+            <div class="avatars-container">
+                <div class="avatars">
+                    <?php
+                    if (!empty($settings['avatars'])) {
+                        foreach ( array_slice($settings['avatars'], 0, 3) as $image ) {
+                            echo '<img src="' . esc_url($image['url']) . '" alt="Colleague">';
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </div>
             </div>
             <div class="badge-text">
                 <strong><?php echo esc_html($settings['badge_number']); ?></strong>
