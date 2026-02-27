@@ -773,3 +773,239 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
   left: -9000px;
   display: none !important;
 }
+
+/**
+ * ГЛОБАЛЬНЫЕ НАСТРОЙКИ
+ */
+.gform_wrapper {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.gform_wrapper .gfield_description.gfield_recipe {
+  color: #c40000 !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+}
+
+.gform_wrapper h2.gform_title {
+  font-size: 32px !important;
+  font-weight: 900 !important;
+  color: #000 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+/**
+ * ПОЛЯ ВВОДА
+ */
+.gform_wrapper input[type='text'],
+.gform_wrapper input[type='email'],
+.gform_wrapper input[type='tel'],
+.gform_wrapper textarea {
+  background-color: #eeeeee !important;
+  border: none !important;
+  border-radius: 0 20px 0 0 !important;
+  padding: 18px 20px !important;
+  font-size: 14px !important;
+  color: #333 !important;
+  box-shadow: none !important;
+}
+
+.gform_wrapper input::placeholder,
+.gform_wrapper textarea::placeholder {
+  font-style: italic !important;
+  color: #888 !important;
+}
+
+.gform_wrapper .gfield_label {
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  display: flex !important;
+  align-items: center;
+}
+
+.gform_wrapper .gfield_required {
+  color: #c40000 !important;
+  font-weight: 400 !important;
+  font-style: italic;
+  font-size: 12px;
+  margin-left: 6px;
+  text-decoration: none !important;
+}
+
+/**
+ * ЗАГРУЗКА ФАЙЛОВ (Upload CV)
+ */
+
+/* Контейнер для поля загрузки */
+.gform_wrapper .ginput_container_fileupload {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Стилизация самой кнопки выбора (через псевдоэлемент браузера) */
+.gform_wrapper input[type='file']::-webkit-file-upload-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #c40000 !important;
+  color: #ffffff !important;
+  padding: 10px 24px !important;
+  border-radius: 30px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: background-color 0.3s ease;
+}
+
+/* Аналог для Firefox */
+.gform_wrapper input[type='file']::file-selector-button {
+  display: inline-flex !important;
+  background-color: #c40000 !important;
+  color: #ffffff !important;
+  padding: 10px 24px !important;
+  border-radius: 30px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  cursor: pointer;
+}
+
+/* Убираем стандартную серую рамку поля, если она есть */
+.gform_wrapper input[type='file'] {
+  border: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: #c40000 !important; /* Цвет текста названия файла */
+  font-style: italic;
+  font-size: 13px;
+}
+
+/* Текст описания под кнопкой */
+.gform_wrapper .gfield_description.gform_fileupload_rules {
+  color: #c40000 !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+  margin-top: 5px !important;
+}
+
+/**
+ * РАДИОКНОПКИ
+ */
+
+/* Контейнер-капсула */
+.gform_wrapper .gfield_radio {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  background-color: #eeeeee !important;
+  padding: 4px !important;
+  border-radius: 50px !important;
+  width: fit-content !important;
+  list-style: none !important;
+  margin: 0 !important;
+}
+
+/* Элемент выбора (согласно вашему HTML) */
+.gform_wrapper .gchoice {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 8px 18px !important;
+  border-radius: 50px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  position: relative;
+}
+
+/* ЛОГИКА ПОДСВЕТКИ: Белый фон при выборе варианта */
+.gform_wrapper .gchoice:has(input:checked) {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Текст: жирный при выборе */
+.gform_wrapper .gchoice label {
+  cursor: pointer !important;
+  font-size: 14px !important;
+  color: #444 !important;
+  margin: 0 !important;
+}
+
+.gform_wrapper .gchoice:has(input:checked) label {
+  font-weight: 800 !important;
+  color: #000 !important;
+}
+
+/**
+ * КРАСНАЯ ТОЧКА
+ */
+.gform_wrapper .gfield-choice-input {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  border: 1.5px solid #ccc !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  margin-right: 10px !important;
+  position: relative !important;
+  outline: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Ободок становится красным */
+.gform_wrapper .gfield-choice-input:checked {
+  border-color: #c40000 !important;
+}
+
+/* Красная точка внутри */
+.gform_wrapper .gfield-choice-input:checked::before {
+  content: '' !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #c40000 !important;
+  border-radius: 50% !important;
+  display: block !important;
+}
+/**
+ * КНОПКА ОТПРАВКИ
+ */
+.gform_wrapper .gform_footer button.gform_button,
+.gform_wrapper .gform_footer input[type='submit'] {
+  background-color: #c40000 !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 50px 12px 25px !important;
+  border-radius: 50px !important;
+  border: none !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>') !important;
+  background-repeat: no-repeat !important;
+  background-position: calc(100% - 20px) center !important;
+  transition: all 0.3s ease !important;
+}
+
+.gform_wrapper .gform_footer button.gform_button:hover,
+.gform_wrapper .gform_footer input[type='submit']:hover {
+  filter: brightness(1.1) !important;
+  transform: scale(1.02) !important;
+}
+
+.gform_wrapper .charleft {
+  font-size: 12px !important;
+  color: #aaa !important;
+  margin-top: 10px !important;
+}

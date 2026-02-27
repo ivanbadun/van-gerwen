@@ -8,7 +8,7 @@
     <div class="zz-index">
         <div class="hero-header">
             <h1><?php echo esc_html($settings['title']); ?></h1>
-            <p><?php echo wp_kses_post($settings['subtitle']); ?></p>
+            <h2><?php echo wp_kses_post($settings['subtitle']); ?></h2>
         </div>
 
         <div class="button-group">
